@@ -1,60 +1,22 @@
 <template>
-  <div>
-    <v-row>
-      <v-col md="4">
-        <h2 class="text-center mb-5">Recently Read Books</h2>
-        <v-row v-for="(item,index) in recentBooks" :key="index">
-          <BookCard
-            class="mb-5"
-            :bookTitle="item.title"
-            :bookAuthor="item.author"
-            :bookDescription="item.description"
-          >
-            <template v-slot:button>
-              <v-btn @click.stop="edit(item,index)">Edit</v-btn>
-              <v-btn @click.stop="remove(item.category, index)">Remove</v-btn>
-            </template>
-          </BookCard>
-        </v-row>
-      </v-col>
-      <v-col md="4">
-        <h2 class="text-center mb-5">Favourite Books</h2>
-        <v-row v-for="(item,index) in favouriteBooks" :key="index">
-          <BookCard
-            class="mb-5"
-            :bookTitle="item.title"
-            :bookAuthor="item.author"
-            :bookDescription="item.description"
-          >
-            <template v-slot:button>
-              <v-btn @click.stop="edit(item,index)">Edit</v-btn>
-              <v-btn @click.stop="remove(item.category, index)">Remove</v-btn>
-            </template>
-          </BookCard>
-        </v-row>
-      </v-col>
-      <v-col md="4">
-        <h2 class="text-center mb-5">Best of the Best</h2>
-        <v-row v-for="(item,index) in bestOfTheBest" :key="index">
-          <BookCard
-            class="mb-5"
-            :bookTitle="item.title"
-            :bookAuthor="item.author"
-            :bookDescription="item.description"
-          >
-            <template v-slot:button>
-              <v-btn @click.stop="edit(item,index)">Edit</v-btn>
-              <v-btn @click.stop="remove(item.category, index)">Remove</v-btn>
-            </template>
-          </BookCard>
-        </v-row>
-      </v-col>
-    </v-row>
-  </div>
+  <v-card class="mx-auto" max-width="400">
+    <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" height="200px" />
+    <v-card-title>{{ booktitle }}</v-card-title>
+    <v-card-subtitle>{{ bookauthor }}</v-card-subtitle>
+    <v-card-text>{{ bookdescription }}</v-card-text>
+    <v-card-actions>
+      <v-spacer />
+      <slot name="button" />
+    </v-card-actions>
+  </v-card>
 </template>
 
 <script>
 export default {
-  props: ["bookTitle", "bookAuthor", "bookDescription"]
-};
+  props: {
+    bookTitle: { type: String, required: true },
+    bookAuthor: { type: String, required: true },
+    bookDescription: { type: String, required: true }
+  }
+}
 </script>

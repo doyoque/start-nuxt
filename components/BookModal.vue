@@ -24,7 +24,7 @@ export default {
       title: "",
       author: "",
       description: "",
-      categories: ["Recently read books", "Favourite books", "Best of the best"]
+      categories: ["Recently read books", "Favourite books", "Best of the best"],
     };
   },
 }
